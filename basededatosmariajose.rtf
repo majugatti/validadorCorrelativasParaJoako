@@ -1,0 +1,78 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 CREATE SCHEMA `alumno\'b4 DEFAULT CHARACTER SET utf8;\
+\
+CREATE TABLE `alumno\'b4.`alumno\'b4(\
+`nombre\'b4 VARCHAR (45) NOT NULL,\
+`apellido\'b4 VARCHAR (45) NOT NULL,\
+`dni\'b4 VARCHAR (8) NOT NULL,\
+`legajo\'b4 VARCHAR (8) NOT NULL,\
+`materias_aprobadas\'b4 VARCHAR (5000) NULL,\
+PRIMARY KEY (`legajo\'b4)\
+);\
+\
+INSERT INTO `alumno\'b4.`alumno\'b4 (`nombre\'b4, `apellido\'b4, `dni\'b4, `legajo\'b4, `materias_aprobadas\'b4) \
+VALUES (`Maria Jose\'b4, `Gatti, `32533297\'b4, `00000001\'b4, `Arte culinario 1, Pasteleria y panaderia plant based, Nutricion Plant Based, Seguridad e Higiene de alimentos\'b4);\
+\
+INSERT INTO `alumno\'b4.`alumno\'b4 (`nombre\'b4, `apellido\'b4, `dni\'b4, `legajo\'b4, `materias_aprobadas\'b4) \
+VALUES (`Leandro\'b4, `Pires, `30996788\'b4, `00000002\'b4, `Arte culinario 1, Pasteleria y panaderia plant based, Nutricion Plant Based, Seguridad e Higiene de alimentos,Arte culinario 2, Cocina del mundo plant based\'b4);\
+\
+INSERT INTO `alumno\'b4.`alumno\'b4 (`nombre\'b4, `apellido\'b4, `dni\'b4, `legajo\'b4, `materias_aprobadas\'b4) \
+VALUES (`Augusto\'b4, `Pires, `54698356\'b4, `00000003\'b4, 'Arte culinario 2, Pasteleria y panaderia plant based');\
+\
+INSERT INTO `alumno\'b4.`alumno\'b4 (`nombre\'b4, `apellido\'b4, `dni\'b4, `legajo\'b4, `materias_aprobadas\'b4) \
+VALUES (`Aurelio\'b4, `Pires, `57304118\'b4, `00000004\'b4, null);\
+\
+\
+CREATE TABLE `alumno\'b4.`materia\'b4(\
+`id_materia\'b4 INT NOT NULL AUTO_INCREMENT,\
+`nombre\'b4 VARCHAR (45) NOT NULL,\
+`correlativas\'b4 VARCHAR (5000) NULL,\
+PRIMARY KEY (`id_materia\'b4)\
+);\
+\
+INSERT INTO `alumno\'b4.`materia\'b4 (`nombre\'b4) VALUES (`Arte culinario 1\'b4);\
+INSERT INTO `alumno\'b4.`materia\'b4 (`nombre\'b4, `correlativas\'b4) VALUES (`Arte culinario 2\'b4, `Arte culinario 1\'b4,);\
+INSERT INTO `alumno\'b4.`materia\'b4 (`nombre\'b4, `correlativas\'b4) VALUES (`Nutricion plant based\'b4, `Arte culinario 1, Arte culinario 2\'b4,);\
+INSERT INTO `alumno\'b4.`materia\'b4 (`nombre\'b4, `correlativas\'b4) VALUES (`Pasteler\'eda y panaderia plant based\'b4, `Arte culinario 1, Arte culinario 2\'b4);\
+INSERT INTO `alumno\'b4.`materia\'b4 (`nombre\'b4) VALUES (`Seguridad e higiene de alimentos\'b4);\
+INSERT INTO `alumno\'b4.`materia\'b4 (`nombre\'b4) VALUES (`Cocina del mundo plant based\'b4);\
+INSERT INTO `alumno\'b4.`materia\'b4 (`nombre\'b4, `correlativas\'b4) VALUES (`Nutricion plant based 2\'b4, `Nutricion plant based 1\'b4);\
+INSERT INTO `alumno\'b4.`materia\'b4 (`nombre\'b4) VALUES (`Administracion y gestion gastronomica\'b4);\
+\
+\
+CREATE TABLE `alumno\'b4.`inscripcion\'b4(\
+`id_inscripcion\'b4 INT NOT NULL AUTO_INCREMENT,\
+`dni_alumno\'b4 VARCHAR (8) NOT NULL,\
+`estado_inscripcion\'b4 VARCHAR (15) NULL,\
+`fecha_inscripcion\'b4 DATETIME NOT NULL,\
+`materia_inscripcion\'b4 VARCHAR (100) NOT NULL,\
+PRIMARY KEY (`id_inscripcion\'b4)\
+);\
+\
+INSERT INTO `alumno\'b4.`inscripcion\'b4 (`dni_alumno\'b4, `estado_inscripcion\'b4,`fecha_inscripcion\'b4,\
+`materia_inscripcion\'b4) VALUES (`32533297\'b4,  `aprobada\'b4, `2023/04/27\'b4, `Arte culinario 1\'b4);\
+\
+INSERT INTO `alumno\'b4.`inscripcion\'b4 (`dni_alumno\'b4, `estado_inscripcion\'b4,`fecha_inscripcion\'b4,\
+`materia_inscripcion\'b4) VALUES (`30996788\'b4, `aprobada\'b4, `2023/04/27\'b4, `Arte culinario 2\'b4);\
+\
+INSERT INTO `alumno\'b4.`inscripcion\'b4 (`dni_alumno\'b4, `estado_inscripcion\'b4,`fecha_inscripcion\'b4,\
+`materia_inscripcion\'b4) VALUES (`54598356\'b4, `desaprobado\'b4, `2023/04/27\'b4, `Cocina del mundo plant based\'b4);\
+\
+INSERT INTO `alumno\'b4.`inscripcion\'b4 (`dni_alumno\'b4, `estado_inscripcion\'b4,`fecha_inscripcion\'b4,\
+`materia_inscripcion\'b4) VALUES (`57304118\'b4, `desaprobada\'b4, `2023/04/27\'b4, `Arte culinario 2\'b4);\
+\
+\
+ALTER TABLE `alumno\'b4.`alumno\'b4\
+CHANGE COLUMN `legajo\'b4 `legajo\'b4 INT (5) NOT NULL AUTO_INCREMENT;\
+\
+ALTER TABLE `alumno\'b4.`alumno\'b4\
+ADD UNIQUE INDEX `dni_UNIQUE\'b4 (`dni\'b4 ASC);\
+\
+ALTER TABLE `alumno\'b4.`materia\'b4\
+ADD UNIQUE INDEX `nombre_UNIQUE\'b4 (`nombre\'b4 ASC);}
